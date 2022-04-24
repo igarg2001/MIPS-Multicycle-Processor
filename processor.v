@@ -1,7 +1,6 @@
 module processor (
     cont_out, ALUOut_out, regA_out, regB_out, regC_out, PC_out, instr_out, rst, clk, PC_rst
 );
-
 output [15:0] ALUOut_out, regA_out, regB_out, regC_out, PC_out, instr_out;
 output [13:0] cont_out;
 input clk, rst, PC_rst;
@@ -21,6 +20,10 @@ wire [1:0] select_to_imm_data;
 
 reg[15:0] IR, MDR, reg_A, reg_B, reg_C, ALUOut;
 
+// initial begin
+// 	#5; $display("-----------------rst = %b, clk = %b PC_rst = %b------------------\n", rst, clk, PC_rst);
+// end
+
 
 always @(negedge clk) begin
     if(IRWrite==1'b1) begin
@@ -37,6 +40,7 @@ end
 
 mux_2x1 module1 (input_to_mem, IorD, output_from_PC, output_from_ALUOut);
 ID_Mem module2 (instruction, reg_C ,input_to_mem, MemRead, MemWrite, IorD, clk);
+
 assign MUX_Control_To_Read_Reg1 = (IR[15:12]==4'b0000 || IR[15:12]==4'b1001 || IR[15:12]==4'b1010 || IR[15:12]==4'b1101 || IR[15:12]==4'b1110 || IR[15:12]==4'b0110 || IR[15:12]==4'b0111 || IR[15:12]==4'b0011) ? 2'b00 : 
                                   (IR[15:12]==4'b0001 || IR[15:12]==4'b0010) ? 2'b01 : 2'b10;
 mux_3x1 module3 (input_to_read_reg1, MUX_Control_To_Read_Reg1, IR[11:8], IR[9:8], IR[7:4]);
@@ -53,14 +57,13 @@ mux_2x1 module12 (input_to_PC_from_ALU, PCSrc, output_from_ALU, reg_C);
 // PC module13 (output_from_PC, input_to_PC_from_ALU, )
 assign PCControl = (IR[15:12] == 4'b0100) ? PCWrite & ALUZero : 
                    (IR[15:12] == 4'b0101) ? PCWrite & ~ALUZero :
-                   (IR[15:12] == 4'b0011) ? PCWrite :
-                   1'bz;
+                   PCWrite;
 PC module13 (output_from_PC, input_to_PC_from_ALU, PCControl, clk, PC_rst);
 control module14 (clk, rst, IR[15:12], PCWrite, PCSrc, IorD, MemRead, MemWrite, IRWrite, ALUSrcA, ALUSrcB, ALUOp, RegDst, RegWrite);
 
 assign cont_out = {PCWrite, PCSrc, IorD, MemRead, MemWrite, IRWrite, ALUSrcA, ALUSrcB, ALUOp, RegDst,RegWrite};
-assign ALUOut_out = output_from_ALUOut;
-assign instr_out = instruction;
+assign ALUOut_out = ALUOut;
+assign instr_out = IR;
 assign PC_out = output_from_PC;
 assign regA_out = reg_A;
 assign regB_out = reg_B;
@@ -192,12 +195,15 @@ input R_en, W_en, IorD, clk;
 reg [7:0] mem [0:64*1024-1];
 
 initial
-begin
-	if(IorD)
-    	$readmemh("data_mem.dat", mem); // IorD=1 means Data address from ALUOut
-	if(~IorD)
-		$readmemh("instr_mem.dat", mem); // IorD=0 means Instruction address obtd from PC
-end
+// 	#5; $display("---------------Value of IorD = %b", IorD);
+// 	if(IorD)
+//     	$readmemh("data_mem.dat", mem); // IorD=1 means Data address from ALUOut
+// 	if(~IorD) begin
+// 		#5; $display("---------------------------Reading from instr_mem.dat-------------------------------\n");
+// 		$readmemh("instr_mem.dat", mem); // IorD=0 means Instruction address obtd from PC
+// end
+$readmemh("instr_mem.dat", mem);
+		
 
 always @(negedge clk)
 begin
@@ -223,9 +229,10 @@ input wen, clk;
 reg [15:0] register [0:15];
 
 initial 
-    $readmemh("data_mem.dat", register);
+    $readmemh("registers.dat", register);
 
 always @(negedge clk) begin
+	#1;
     rd1 <= register[read1];
     rd2 <= register[read2];
     rd3 <= register[read3];
@@ -275,6 +282,7 @@ module alu (inA, inB, ALUOp, ALUOut, Zero);
 							temp = {temp[15], temp[15:1]};
 					end
 				endcase
+				ALUOut = temp;
 			end
 			default: ALUOut = 16'bz;
 		endcase

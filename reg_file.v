@@ -9,7 +9,7 @@ input wen, clk;
 reg [15:0] register [0:15];
 
 initial 
-    $readmemh("data_mem.dat", register);
+    $readmemh("registers.dat", register);
 
 always @(negedge clk) begin
     rd1 <= register[read1];
