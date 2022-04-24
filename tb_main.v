@@ -112,44 +112,6 @@ $display("-----------------------------------------------------------");
 	#10 $display("-----------------------------------------------------------");
     //10
     $display("-----------------------------------------------------------");
-
-	$display("Jump: Jump to PC + sign extended immediate data");
-	#10 $display("Cycle No: 1\tCycle Name: IF\tPC = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out,ALUOut_out, instr_out,cont_out);
-	#10 $display("Cycle No: 2\tCycle Name: ID\treg1 = %h\treg2 = %h\treg3 = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out, instr_out,cont_out);
-	#10 $display("Cycle No: 3\tCycle Name: EX\tPC = %h\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out, regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
-	#10 $display("-----------------------------------------------------------");
-    //11
-    $display("-----------------------------------------------------------");
-	$display("Store");
-	#10 $display("Cycle No: 1\tCycle Name: IF\tPC = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out,ALUOut_out, instr_out,cont_out);
-	#10 $display("Cycle No: 2\tCycle Name: ID\treg1 = %h\treg2 = %h\treg3 = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out, instr_out,cont_out);
-	#10 $display("Cycle No: 3\tCycle Name: EX\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
-	#10 $display("Cycle No: 4\tCycle Name: MEM\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tmem = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out, out_memory,cont_out);
-	#10 $display("-----------------------------------------------------------");
-    //12
-    $display("-----------------------------------------------------------");
-	$display("Load");
-	#10 $display("Cycle No: 1\tCycle Name: IF\tPC = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out,ALUOut_out, instr_out,cont_out);
-	#10 $display("Cycle No: 2\tCycle Name: ID\treg1 = %h\treg2 = %h\treg3 = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out, instr_out,cont_out);
-	#10 $display("Cycle No: 3\tCycle Name: EX\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
-	#10 $display("Cycle No: 4\tCycle Name: MEM\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tmem = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out, out_memory,cont_out);
-	#10 $display("Cycle No: 5\tCycle Name: WB\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tmem = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out, out_memory,cont_out);
-	#10 $display("-----------------------------------------------------------");
-    //13
-    $display("-----------------------------------------------------------");
-	$display("Branch Equal: branch to the address in register RT when RA and RB are equal");
-	#10 $display("Cycle No: 1\tCycle Name: IF\tPC = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out,ALUOut_out, instr_out,cont_out);
-	#10 $display("Cycle No: 2\tCycle Name: ID\treg1 = %h\treg2 = %h\treg3 = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out, instr_out,cont_out);
-	#10 $display("Cycle No: 3\tCycle Name: EX\tPC = %h\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out, regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
-	#10 $display("-----------------------------------------------------------");
-    //14
-    $display("-----------------------------------------------------------");
-	$display("Branch not Equal: branch to the address in register RT when RA and RB are unequal");
-	#10 $display("Cycle No: 1\tCycle Name: IF\tPC = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out,ALUOut_out, instr_out,cont_out);
-	#10 $display("Cycle No: 2\tCycle Name: ID\treg1 = %h\treg2 = %h\treg3 = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out, instr_out,cont_out);
-	#10 $display("Cycle No: 3\tCycle Name: EX\tPC = %h\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out, regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
-	#10 $display("-----------------------------------------------------------");
-    //15
     $display("-----------------------------------------------------------");
 	$display("NAND: register addressing: RD = RS1 nand RS2");
 	#10 $display("Cycle No: 1\tCycle Name: IF\tPC = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out,ALUOut_out, instr_out,cont_out);
@@ -157,8 +119,7 @@ $display("-----------------------------------------------------------");
 	#10 $display("Cycle No: 3\tCycle Name: EX\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
 	#10 $display("Cycle No: 4\tCycle Name: MEM\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tmem = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out, out_memory,cont_out);
 	#10 $display("-----------------------------------------------------------");
-    //16
-    $display("-----------------------------------------------------------");
+	$display("-----------------------------------------------------------");
 	$display("OR: register addressing: RD = RS1 or RS2");
 	#10 $display("Cycle No: 1\tCycle Name: IF\tPC = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out,ALUOut_out, instr_out,cont_out);
 	#10 $display("Cycle No: 2\tCycle Name: ID\treg1 = %h\treg2 = %h\treg3 = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out, instr_out,cont_out);
@@ -181,6 +142,44 @@ $display("-----------------------------------------------------------");
 	#10 $display("Cycle No: 3\tCycle Name: EX\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
 	#10 $display("Cycle No: 4\tCycle Name: MEM\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tmem = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out, out_memory,cont_out);
 	#10 $display("-----------------------------------------------------------");
+	 $display("-----------------------------------------------------------");
+	$display("Store");
+	#10 $display("Cycle No: 1\tCycle Name: IF\tPC = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out,ALUOut_out, instr_out,cont_out);
+	#10 $display("Cycle No: 2\tCycle Name: ID\treg1 = %h\treg2 = %h\treg3 = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out, instr_out,cont_out);
+	#10 $display("Cycle No: 3\tCycle Name: EX\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
+	#10 $display("Cycle No: 4\tCycle Name: MEM\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tmem = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out, out_memory,cont_out);
+	#10 $display("-----------------------------------------------------------");
+    //12
+    $display("-----------------------------------------------------------");
+	$display("Load");
+	#10 $display("Cycle No: 1\tCycle Name: IF\tPC = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out,ALUOut_out, instr_out,cont_out);
+	#10 $display("Cycle No: 2\tCycle Name: ID\treg1 = %h\treg2 = %h\treg3 = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out, instr_out,cont_out);
+	#10 $display("Cycle No: 3\tCycle Name: EX\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
+	#10 $display("Cycle No: 4\tCycle Name: MEM\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tmem = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out, out_memory,cont_out);
+	#10 $display("Cycle No: 5\tCycle Name: WB\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tmem = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out, out_memory,cont_out);
+	#10 $display("-----------------------------------------------------------");
+	$display("Jump: Jump to PC + sign extended immediate data");
+	#10 $display("Cycle No: 1\tCycle Name: IF\tPC = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out,ALUOut_out, instr_out,cont_out);
+	#10 $display("Cycle No: 2\tCycle Name: ID\treg1 = %h\treg2 = %h\treg3 = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out, instr_out,cont_out);
+	#10 $display("Cycle No: 3\tCycle Name: EX\tPC = %h\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out, regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
+	#10 $display("-----------------------------------------------------------");
+    //11
+    //13
+    $display("-----------------------------------------------------------");
+	$display("Branch Equal: branch to the address in register RT when RA and RB are equal");
+	#10 $display("Cycle No: 1\tCycle Name: IF\tPC = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out,ALUOut_out, instr_out,cont_out);
+	#10 $display("Cycle No: 2\tCycle Name: ID\treg1 = %h\treg2 = %h\treg3 = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out, instr_out,cont_out);
+	#10 $display("Cycle No: 3\tCycle Name: EX\tPC = %h\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out, regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
+	#10 $display("-----------------------------------------------------------");
+    //14
+    $display("-----------------------------------------------------------");
+	$display("Branch not Equal: branch to the address in register RT when RA and RB are unequal");
+	#10 $display("Cycle No: 1\tCycle Name: IF\tPC = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out,ALUOut_out, instr_out,cont_out);
+	#10 $display("Cycle No: 2\tCycle Name: ID\treg1 = %h\treg2 = %h\treg3 = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out, instr_out,cont_out);
+	#10 $display("Cycle No: 3\tCycle Name: EX\tPC = %h\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",PC_out, regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
+	#10 $display("-----------------------------------------------------------");
+    //15
+    //16
     //19
     $display("-----------------------------------------------------------");
 	$display("Addition: register addressing: RD = RS1 + RS2");
