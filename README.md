@@ -1,5 +1,6 @@
 # MIPS-Multicycle-Processor
-Implementation of MIPS Multicycle Processor (with datapath and control) using Verilog
+Implementation of 16-bit MIPS Multicycle Processor (with datapath and control) using Verilog
+The instruction set can be found [here](https://drive.google.com/file/d/1NesGaZKVigRQUhYskqFTJvKOct304K8w/view?usp=sharing)
 
 Made as part of the Course CSF342: Computer Architecture at BITS Pilani
 
