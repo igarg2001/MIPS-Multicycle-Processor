@@ -283,7 +283,7 @@ input wen, clk;
 reg [15:0] register [0:15];
 
 initial 
-    $readmemh("register_1.dat", register);
+    $readmemh("registers.dat", register);
 
 always @(negedge clk) begin
 	 #1;
@@ -631,7 +631,7 @@ begin
 	#10 $display("Cycle No: 2\tCycle Name: ID\treg1 = %h\treg2 = %h\treg3 = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out, instr_out,cont_out);
 	#10 $display("Cycle No: 3\tCycle Name: EX\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tcontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
 	#10 $display("Cycle No: 4\tCycle Name: MEM\treg1 = %h\treg2 = %h\treg3 = %h\tALU = %h\tinstr = %h\tontrol = %b\t",regA_out, regB_out, regC_out,ALUOut_out, instr_out,cont_out);
-	#10 $display(" R13: %h", first_insta.module7.register[13] );
+	#10 $display(" R2: %h", first_insta.module7.register[2] );
 	// #10 $display("-----------------------------------------------------------");
     //3
 
